@@ -1,0 +1,59 @@
+@baseUrl = http://localhost:3000
+@token = <USER_TOKEN>
+
+### Create common user
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Naruto Uzumaki",
+  "email": "uzumakinaruto@konoha.com",
+  "password": "123456"
+}
+
+### Create partner user
+POST {{baseUrl}}/users/partners
+Content-Type: application/json
+
+{
+  "name": "Kakashi Hatake",
+  "email": "hatakekakashi@konoha.com",
+  "password": "123456"
+}
+
+### User login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "hatakekakashi@konoha.com",
+  "password": "123456"
+}
+
+### Register a partner relationship
+POST {{baseUrl}}/partners
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Kakashi Hatake"
+}
+
+### List all partners
+GET {{baseUrl}}/partners
+Authorization: Bearer {{token}}
+
+### Create new event
+POST {{baseUrl}}/events
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Event 1",
+  "description": "Event 1 description",
+  "date": "2024-06-23T10:30:13.60"
+}
+
+### List all events
+GET {{baseUrl}}/events
+Authorization: Bearer {{token}}
